@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+
+//Case 1:
+//Click to request permissions button -> Deny first permission, Allow the second permission
+//Click to request permissions button again -> Deny first permission, Deny the second permission -> Crash
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.test.easypermissionscrash"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+
+    implementation 'pub.devrel:easypermissions:1.1.0'
+}
+
+//Case 2:
+//Click to request permissions button -> Deny first permission, Deny the second permission
+//Click to request permissions button again -> Crash
+/*android {
+    compileSdkVersion 25
+    defaultConfig {
+        applicationId "com.test.easypermissionscrash"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:25.3.1'
+
+    implementation 'pub.devrel:easypermissions:1.1.0'
+}*/
+
